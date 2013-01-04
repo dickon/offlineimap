@@ -411,6 +411,9 @@ class UIBase(object):
         self.debug(debugtype, "Write mail '%s:%d' with flags %s" %
                    (folder, uid, repr(flags)))
 
+    def madelocalmessage(self, filename):
+        pass
+
     ################################################## Threads
 
     def getThreadDebugLog(self, thread):

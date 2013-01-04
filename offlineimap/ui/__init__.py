@@ -16,11 +16,12 @@
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
 
 from offlineimap.ui.UIBase import getglobalui, setglobalui
-from offlineimap.ui import TTY, Noninteractive, Machine
+from offlineimap.ui import TTY, Noninteractive, Machine, Biff
 
 UI_LIST = {'ttyui': TTY.TTYUI,
            'basic': Noninteractive.Basic,
            'quiet': Noninteractive.Quiet, 
+           'biff': Biff.Biff, 
            'machineui': Machine.MachineUI}
 
 #add Blinkenlights UI if it imports correctly (curses installed)

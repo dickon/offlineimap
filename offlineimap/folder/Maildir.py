@@ -328,6 +328,7 @@ class MaildirFolder(BaseFolder):
 
             self.messagelist[uid]['flags'] = flags
             self.messagelist[uid]['filename'] = newfilename
+            self.ui.madelocalmessage(os.path.join(self.getfullname(), newfilename))
 
     def change_message_uid(self, uid, new_uid):
         """Change the message from existing uid to new_uid
