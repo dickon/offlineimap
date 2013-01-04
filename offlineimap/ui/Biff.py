@@ -30,7 +30,7 @@ protocol = '7.0.0'
 def run(command):
     pobj = subprocess.Popen(command, stdout=subprocess.PIPE, 
                             stderr=subprocess.PIPE)
-    pboj.communicate()
+    pobj.communicate()
     return pobj.returncode
 
 
