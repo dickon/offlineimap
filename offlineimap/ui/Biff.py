@@ -28,11 +28,21 @@ import time
 
 protocol = '7.0.0'
 def run(command):
-    print '+'+ ' '.join(command)
     pobj = subprocess.Popen(command, stdout=subprocess.PIPE, 
                             stderr=subprocess.PIPE)
-    print 'out', pobj.communicate()
+    pboj.communicate()
     return pobj.returncode
+
+
+def index():
+    run(['pkill', '-f',  'mu server'])
+    while 1:
+        ec = run(['pgrep', '-f', 'mu server'])
+        if ec == 1:
+            break
+        time.sleep(0.1)
+    run(['mu', 'index', '--maildir=/scratch/Mail/citrix'])
+    print '[indexed]'
 
 
 class Biff(UIBase):
@@ -82,12 +92,4 @@ class Biff(UIBase):
         pass
 
     def madelocalmessage(self, filename):
-        run(['pkill', '-f',  'mu server'])
-        while 1:
-            ec = run(['pgrep', '-f', 'mu server'])
-            if ec == 1:
-                break
-            time.sleep(0.1)
-        run(['/usr/local/bin/mu', 'add', '--maildir=/scratch/Mail',  filename])
-        run(['/usr/local/bin/mu', 'index', '--maildir=/scratch/Mail/citrix', '-v', '-d'])
-        print '[indexed '+filename+']'
+        index()
